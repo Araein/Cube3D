@@ -6,8 +6,9 @@
 
 
 1. regarder si les arguments sont bons
-2. initialier la structure principale
-3. verifier si les infos de la map sont legit
+2. verifier si les infos de la map sont legit
+3. initialier la structure principale
+
 4. verifier si la map est legit
 5. creer la map
 

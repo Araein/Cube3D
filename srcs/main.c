@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 // #include "So_long.h"
+
+
+
 int	ft_strlen(const char *s)
 {
 	int	i;
@@ -112,6 +115,66 @@ int	ft_strlen(const char *s)
 // 	elem->error = 0;
 // }
 
+int	check_map(char *string)
+{
+	int	fd;
+	char	**map;
+	int		i;
+
+	i = 0;
+
+	fd = open(string, O_RDONLY);
+	if (fd == -1)
+		return (-1);
+	
+	while(get_next_line(fd, line))
+
+
+
+
+
+/*
+
+ligne commence forcement par un identifiant
+
+
+Soit ca commence par un identifiant soit 1 ou ' ' -> puis 1 
+
+pas de lignes vides dans la map
+
+◦ Pour chaque élement, le premier caractère est l’identifiant (un ou deux carac-
+tères), suivi de toutes les informations spécifiques à l’élément dans un ordre
+strict tel que :
+— texture nord :
+NO ./path_to_the_north_texture
+— identifiant : NO
+— chemin vers la texture nord
+— South texture :
+SO ./path_to_the_south_texture
+— identifiant : SO
+— chemin vers la texture sud
+— West texture :
+WE ./path_to_the_west_texture
+— identifiant : WE
+— chemin vers la texture ouest
+— East texture :
+EA ./path_to_the_east_texture
+— identifiant : EA
+— chemin vers la texture est
+— Couleur du sol :
+F 220,100,0
+— identifiant : F
+— couleurs R,G,B range [0,255] : 0, 255, 255
+— Couleur du plafond :
+C 225,30,0
+— identifiant : C
+— couleurs R,G,B range [0,255] : 0, 255, 255
+*/
+	//verifier si elle est fermee
+	//verifiee si il y a les bons charac
+	return (1);
+}
+
 int	check_arg(char **argv, int argc)
 {
 	char	*check_cub;
@@ -143,7 +206,9 @@ int	main(int argc, char **argv)
 //	int		fd;
 
 	if (check_arg(argv, argc) == -1)
-		return (write(2, "Error: wrong input\n", 19), -1);
+		return (write(2, "Error\nWrong input\n", 18), -1);
+	if (check_map(argv[1]) == -1)
+		return (write(2, "Error\nIssue within the .cub file\n", 33), -1);
 	// structinit(&elem);
 	// if (!(parsing(argc, argv, &elem)))
 	// 	return (error(0, &elem));
