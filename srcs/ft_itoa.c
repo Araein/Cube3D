@@ -6,19 +6,19 @@
 /*   By: tlebouvi <tlebouvi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:52:25 by tlebouvi          #+#    #+#             */
-/*   Updated: 2022/08/13 17:13:10 by tlebouvi         ###   ########.fr       */
+/*   Updated: 2023/04/10 15:12:30 by tlebouvi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "So_long.h"
 
-int	test( int **r, char *buf)
-{
-	if (**r == -1)
-		return (0);
-	buf[**r] = 0;
-	return (1);
-}
+// int	test( int **r, char *buf)
+// {
+// 	if (**r == -1)
+// 		return (0);
+// 	buf[**r] = 0;
+// 	return (1);
+// }
 
 int	itoanega(long long *n, long long *negative)
 {

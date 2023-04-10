@@ -22,9 +22,22 @@
 # include "../mlx/mlx.h"
 # include "../mlx/mlx_int.h"
 
+typedef struct s_map
+{
+    int     number_of_line;
+    char    *NO_input;
+    char    *SO_input;
+    char    *WE_input;
+    char    *EA_input;
+    char    *F_input;
+    char    *C_input;
+    char    **map;
+
+}				t_map;
+
 typedef struct s_cub
 {
-
+    t_map   *map;
 }				t_cub;
 
 # ifndef BUFFER_SIZE
@@ -49,8 +62,20 @@ typedef struct s_cub
 
 //gnl
 
-int	structinit(t_elem *cub);
+// int	structinit(t_elem *cub);
+int	main(int argc, char **argv);
+
 // int		writemap(char **argv, int fd, t_elem *elem);
 // int		createmap(char **argv, t_elem *elem, int fd);
+//gnl_utils
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr(const char *s, int c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strdup(const char *str);
+size_t	ft_strlen(const char *s);
+
+//gnl
+int	get_next_line(int fd, char **line);
+
 
 #endif

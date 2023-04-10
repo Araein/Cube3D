@@ -1,41 +1,43 @@
 
-NAME 			= so_long
+NAME 			= cub3D
 
 SRCS_LIST		=	main.c \
-						parsing.c \
-						checkmap.c \
-						gnl.c \
-						ft_itoa.c \
-						gnl_utils.c \
-						window.c \
-						fillwindow.c \
-						gameplay.c \
-						error.c \
-						window_management.c
+					gnl_utils.c \
+					gnl.c 
+# parsing.c \
+# checkmap.c \
 
-SRCS_LIST_BONUS	=	main.c \
-						parsing.c \
-						checkmap.c \
-						ft_itoa.c \
-						gnl.c \
-						../bonus_files/check_xpm_bonus.c \
-						../bonus_files/animation_bonus.c \
-						../bonus_files/window_init_bonus.c \
-						gnl_utils.c \
-						window.c \
-						error.c \
-						fillwindow.c \
-						gameplay.c
+# ft_itoa.c \
+
+# window.c \
+# fillwindow.c \
+# gameplay.c \
+# error.c \
+# window_management.c
+
+# SRCS_LIST_BONUS	=	main.c \
+# 						parsing.c \
+# 						checkmap.c \
+# 						ft_itoa.c \
+# 						gnl.c \
+# 						../bonus_files/check_xpm_bonus.c \
+# 						../bonus_files/animation_bonus.c \
+# 						../bonus_files/window_init_bonus.c \
+# 						gnl_utils.c \
+# 						window.c \
+# 						error.c \
+# 						fillwindow.c \
+# 						gameplay.c
 
 FOLDER			= srcs
 
 SRCS			= $(addprefix ${FOLDER}/, ${SRCS_LIST})
 
-SRCS_BONUS		= $(addprefix ${FOLDER}/, ${SRCS_LIST_BONUS})
+# SRCS_BONUS		= $(addprefix ${FOLDER}/, ${SRCS_LIST_BONUS})
 
 OBJS			= ${SRCS:.c=.o}
 
-OBJS_BONUS		= ${SRCS_BONUS:.c=.o}
+# OBJS_BONUS		= ${SRCS_BONUS:.c=.o}
 
 HEADER			= header
 
@@ -67,7 +69,8 @@ $(NAME):	${OBJS}
 			${CC} ${FLAGS} -o3 ${MYLIB} ${MLX_LINUX} -lm -lbsd -lX11 -lXext -o ${NAME}	
 
 clean:
-			${RM} ${OBJS} ${OBJS_BONUS} ${OUT} ${OBJDIR}
+			${RM} ${OBJS}  ${OUT} ${OBJDIR}
+# ${OBJS_BONUS}
 
 fclean:		clean
 			${RM} ${NAME} ${MYLIB}
@@ -75,28 +78,28 @@ fclean:		clean
 move:			${OBJS}
 				mkdir -p ${OBJDIR} && mv ${OBJS} ${OBJDIR}
 
-bonus:		${OBJS_BONUS}
-			${LINK} ${MYLIB} ${OBJS_BONUS}
-			ranlib ${MYLIB}
-			make -C ${PATH_MLX_LINUX}
-			${CC} ${FLAGS} -o3 ${MYLIB} ${MLX_LINUX} -lm -lbsd -lX11 -lXext -o $(NAME)
+# bonus:		${OBJS_BONUS}
+# 			${LINK} ${MYLIB} ${OBJS_BONUS}
+# 			ranlib ${MYLIB}
+# 			make -C ${PATH_MLX_LINUX}
+# 			${CC} ${FLAGS} -o3 ${MYLIB} ${MLX_LINUX} -lm -lbsd -lX11 -lXext -o $(NAME)
 
-valgrind:	${NAME}
-			@valgrind \
-			--leak-check=full --tool=memcheck \
-			--show-reachable=yes \
-			--track-fds=yes \
-			--errors-for-leak-kinds=all \
-			--show-leak-kinds=all \
-			./${NAME} maps/map1.ber
+# valgrind:	${NAME}
+# 			@valgrind \
+# 			--leak-check=full --tool=memcheck \
+# 			--show-reachable=yes \
+# 			--track-fds=yes \
+# 			--errors-for-leak-kinds=all \
+# 			--show-leak-kinds=all \
+# 			./${NAME} maps/map1.ber
 
-norminette:	${SRCS} ${SRCS_BONUS}
-			@norminette header/So_long.h srcs/* bonus_files/*
+# norminette:	${SRCS} ${SRCS_BONUS}
+# 			@norminette header/So_long.h srcs/* bonus_files/*
 
 re:			fclean all
 
-rebonus:	fclean bonus
+# rebonus:	fclean bonus
 
-.PHONY: 	all clean fclean re rebonus bonus valgrind norminette move
+# .PHONY: 	all clean fclean re rebonus bonus valgrind norminette move
 
 # -g3 -fsanitize=address

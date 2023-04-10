@@ -6,11 +6,13 @@
 /*   By: tlebouvi <tlebouvi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 14:41:13 by tlebouvi          #+#    #+#             */
-/*   Updated: 2022/08/10 17:16:59 by tlebouvi         ###   ########.fr       */
+/*   Updated: 2023/04/10 15:22:41 by tlebouvi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_long.h"
+#include "cub3D.h"
+
+
 
 size_t	ft_strlen(const char *s)
 {
