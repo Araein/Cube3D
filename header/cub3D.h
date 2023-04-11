@@ -60,10 +60,9 @@ typedef struct s_cub
 # define LEFT		97
 # define RIGHT		100
 
-//gnl
 
 // int	structinit(t_elem *cub);
-int	main(int argc, char **argv);
+int     main(int argc, char **argv);
 
 // int		writemap(char **argv, int fd, t_elem *elem);
 // int		createmap(char **argv, t_elem *elem, int fd);
@@ -75,7 +74,10 @@ char	*ft_strdup(const char *str);
 size_t	ft_strlen(const char *s);
 
 //gnl
-int	get_next_line(int fd, char **line);
+int     get_next_line(int fd, char **line);
 
+//free_data.c
+void	free_map(t_map *map);
+void    free_tab(char **tab);
 
 #endif

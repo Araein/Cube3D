@@ -3,31 +3,9 @@ NAME 			= cub3D
 
 SRCS_LIST		=	main.c \
 					gnl_utils.c \
-					gnl.c 
-# parsing.c \
-# checkmap.c \
+					gnl.c \
+					free_data.c
 
-# ft_itoa.c \
-
-# window.c \
-# fillwindow.c \
-# gameplay.c \
-# error.c \
-# window_management.c
-
-# SRCS_LIST_BONUS	=	main.c \
-# 						parsing.c \
-# 						checkmap.c \
-# 						ft_itoa.c \
-# 						gnl.c \
-# 						../bonus_files/check_xpm_bonus.c \
-# 						../bonus_files/animation_bonus.c \
-# 						../bonus_files/window_init_bonus.c \
-# 						gnl_utils.c \
-# 						window.c \
-# 						error.c \
-# 						fillwindow.c \
-# 						gameplay.c
 
 FOLDER			= srcs
 
@@ -45,7 +23,7 @@ OBJDIR			= obj
 
 CC				= gcc
 
-CFLAGS 			= -Wall -Wextra -Werror
+CFLAGS 			= -Wall -Wextra -Werror -g
 
 RM				= rm -rf
 
