@@ -4,7 +4,9 @@ NAME 			= cub3D
 SRCS_LIST		=	main.c \
 					gnl_utils.c \
 					gnl.c \
-					free_data.c
+					free_data.c \
+					parse_map.c \
+					parse_data.c
 
 
 FOLDER			= srcs

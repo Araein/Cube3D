@@ -129,7 +129,8 @@ void	init_map_struct(t_map *map)
     map->WE_input = NULL;
     map->EA_input = NULL;
     map->F_input = NULL;
-	map->C_input = NULL;	
+	map->C_input = NULL;
+	map->player = 0;
 }
 
 
@@ -223,7 +224,11 @@ int	check_map(char *string, t_map *map)
 	close(fd);
 	if (fill_map(map, string) == -1)
 		return(free(line), free_map(map), -1);
-
+	if (parse_map(map) == -1)
+		return(free(line), free_map(map), -1);
+	// if (parse_data(map, string) == -1)
+	// 	return(free(line), free_map(map), -1);
+	
 	// printf("line num = %d", map->number_of_line);
 	return (1);
 }

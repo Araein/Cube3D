@@ -32,6 +32,8 @@ typedef struct s_map
     char    *F_input;
     char    *C_input;
     char    **map;
+    int     player;
+
 
 }				t_map;
 
@@ -79,5 +81,11 @@ int     get_next_line(int fd, char **line);
 //free_data.c
 void	free_map(t_map *map);
 void    free_tab(char **tab);
+
+//parse_data.c
+int     parse_data(t_map *map);
+
+//parse_map.c
+int     parse_map(t_map *map);
 
 #endif
