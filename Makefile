@@ -6,7 +6,8 @@ SRCS_LIST		=	main.c \
 					gnl.c \
 					free_data.c \
 					parse_map.c \
-					parse_data.c
+					parse_data.c \
+					ft_itoa.c
 
 
 FOLDER			= srcs

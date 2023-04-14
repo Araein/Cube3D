@@ -13,81 +13,6 @@
 #include "cub3D.h"
 
 
-// int	error(int type, t_elem *elem)
-// {
-// 	ft_putstr_fd("Error\n", 2);
-// 	if (type == 0)
-// 		ft_putstr_fd("Something went wrong with your input\n", 2);
-// 	if (type == 1)
-// 	{
-// 		freetab(elem->map, elem);
-// 		ft_putstr_fd("Your map doesn't fit\n", 2);
-// 	}
-// 	if (type == 2)
-// 	{	
-// 		if (elem->error == 3)
-// 			ft_putstr_fd("The map is too big for your screen\n", 2);
-// 		else if (elem->error == 4)
-// 			ft_putstr_fd("Something is wrong with your .xpm files\n", 2);
-// 		else
-// 			ft_putstr_fd("Window initialization failed\n", 2);
-// 	}
-// 	if (type == 3)
-// 		ft_putstr_fd("Something went wrong with the memory allocation\n", 2);
-// 	return (0);
-// }
-
-
-
-// int	createmap(char **argv, t_elem *elem, int fd)
-// {
-// 	int	d;
-
-// 	d = 0;
-// 	fd = open(argv[1], O_RDONLY);
-// 	elem->map = malloc (sizeof(char *) * (elem->mapsize + 1));
-// 	if (elem->map == NULL)
-// 		return (0);
-// 	while (get_next_line(fd, &(elem->temp)) > 0)
-// 	{
-// 		elem->map[d] = ft_strdup(elem->temp);
-// 		free(elem->temp);
-// 		d++;
-// 	}
-// 	close(fd);
-// 	if (elem->temp)
-// 	{
-// 		elem->map[d] = ft_strdup(elem->temp);
-// 		free(elem->temp);
-// 		if (elem->map[d] == NULL)
-// 			return (0);
-// 	}
-// 	elem->map[d + 1] = NULL;
-// 	return (1);
-// }
-
-// int	writemap(char **argv, int fd, t_elem *elem)
-// {
-// 	close(fd);
-// 	fd = open(argv[1], O_RDONLY);
-// 	while (get_next_line(fd, &(elem->temp)))
-// 	{
-// 		elem->mapsize++;
-// 		free(elem->temp);
-// 	}
-// 	if (elem->temp)
-// 	{
-// 		elem->mapsize++;
-// 		free(elem->temp);
-// 	}
-// 	elem->clean = elem->mapsize;
-// 	close(fd);
-// 	if (createmap(argv, elem, fd) == 0)
-// 		return (0);
-// 	return (1);
-// }
-
-
 int	all_data_here(t_map *map)
 {
     if(!map->NO_input)
@@ -175,7 +100,7 @@ int	fill_map(t_map *map, char *string)
 
 
 
-int	check_map(char *string, t_map *map)
+int	check_map(char *string, t_map *map) //attention ignore les \n seuls
 {
 	int	fd;
 	char	*line;
@@ -226,8 +151,8 @@ int	check_map(char *string, t_map *map)
 		return(free(line), free_map(map), -1);
 	if (parse_map(map) == -1)
 		return(free(line), free_map(map), -1);
-	// if (parse_data(map, string) == -1)
-	// 	return(free(line), free_map(map), -1);
+	if (parse_data(map) == -1)
+		return(free(line), free_map(map), -1);
 	
 	// printf("line num = %d", map->number_of_line);
 	return (1);

@@ -62,7 +62,6 @@ typedef struct s_cub
 # define LEFT		97
 # define RIGHT		100
 
-
 // int	structinit(t_elem *cub);
 int     main(int argc, char **argv);
 
@@ -87,5 +86,11 @@ int     parse_data(t_map *map);
 
 //parse_map.c
 int     parse_map(t_map *map);
+
+//ft_itoa.c
+// char	*ft_itoa(long long n);
+int	    ft_atoi(const char *str);
+// char	*ft_substr(char const *s, unsigned int start, size_t len);
+int		ft_isdigit(int c);
 
 #endif
