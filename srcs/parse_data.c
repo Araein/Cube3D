@@ -2,7 +2,24 @@
 
 
 
+//verifier si les espaces apres ou avant le path sont consideres
+int check_texture(char  *string)
+{
+    int     fd;
+    char    *cleanstring;
+    
+    cleanstring = ft_substr(string, 3, ft_strlen(string) - 3);
+    // 
+    // string = cleanstring;
 
+    printf("string = .%s.\n", cleanstring);
+    fd = open(cleanstring, O_RDONLY);
+    free (cleanstring);
+    if (fd < 0)
+        return (printf("errortext1\n"), -1);
+    else
+        return(close(fd), 1);
+}
 
 /*verifier la si 000250 est acceptable -> est ce que 025 valable aussi?*/
 int check_num(char *string, int *i, int type)
@@ -28,7 +45,7 @@ int check_num(char *string, int *i, int type)
         *i += 1;
         else
             return (printf("rgb3\n"), -1);
-        printf("string = %s / i = %d\n", string, *i);
+        // printf("string = %s / i = %d\n", string, *i);
         if (*i >= (int) ft_strlen(string))
             return (printf("rgb4\n"), -1);
         else
@@ -59,14 +76,20 @@ int check_RGB(char *string)
     return (1);
 }
 
-
 int parse_data(t_map *map)
 {
     if (check_RGB(map->C_input) == -1)
         return (-1);
     if (check_RGB(map->F_input) == -1)
         return (-1);
-    
+    if (check_texture(map->EA_input) == -1)
+        return (-1);
+    if (check_texture(map->WE_input) == -1)
+        return (-1);
+    if (check_texture(map->NO_input) == -1)
+        return (-1);
+    if (check_texture(map->SO_input) == -1)
+        return (-1);
     
     return (1);
 }

@@ -33,40 +33,26 @@ typedef struct s_map
     char    *C_input;
     char    **map;
     int     player;
-
-
 }				t_map;
 
 typedef struct s_cub
 {
     t_map   *map;
+
 }				t_cub;
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5
 # endif
-# define ROCK "./images/ROCK0.xpm"
-# define ROCK1 "./images/ROCK1.xpm"
-# define ROCK2 "./images/ROCK2.xpm"
-# define BABA "./images/baba0.xpm"
-# define BABA1 "./images/baba1.xpm"
-# define BABA2 "./images/baba2.xpm"
-# define DOOR "./images/DOOR0.xpm"
-# define DOOR1 "./images/DOOR1.xpm"
-# define DOOR2 "./images/DOOR2.xpm"
-# define KEY "./images/KEY0.xpm"
-# define KEY1 "./images/KEY1.xpm"
-# define KEY2 "./images/KEY2.xpm"
-# define FORWARD	119
-# define BACK		115
-# define LEFT		97
-# define RIGHT		100
+
+// # define FORWARD	119
+// # define BACK		115
+// # define LEFT		97
+// # define RIGHT		100
 
 // int	structinit(t_elem *cub);
 int     main(int argc, char **argv);
 
-// int		writemap(char **argv, int fd, t_elem *elem);
-// int		createmap(char **argv, t_elem *elem, int fd);
 //gnl_utils
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strchr(const char *s, int c);
@@ -90,7 +76,6 @@ int     parse_map(t_map *map);
 //ft_itoa.c
 // char	*ft_itoa(long long n);
 int	    ft_atoi(const char *str);
-// char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_isdigit(int c);
 
 #endif

@@ -6,11 +6,13 @@
 /*   By: tlebouvi <tlebouvi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:40:52 by tlebouvi          #+#    #+#             */
-/*   Updated: 2023/04/11 18:01:27 by tlebouvi         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:17:29 by tlebouvi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+
 
 
 int	all_data_here(t_map *map)
@@ -54,8 +56,7 @@ void	init_map_struct(t_map *map)
     map->WE_input = NULL;
     map->EA_input = NULL;
     map->F_input = NULL;
-	map->C_input = NULL;
-	map->player = 0;
+	map->C_input = NULL;	
 }
 
 
@@ -100,7 +101,7 @@ int	fill_map(t_map *map, char *string)
 
 
 
-int	check_map(char *string, t_map *map) //attention ignore les \n seuls
+int	check_map(char *string, t_map *map)
 {
 	int	fd;
 	char	*line;
@@ -153,7 +154,6 @@ int	check_map(char *string, t_map *map) //attention ignore les \n seuls
 		return(free(line), free_map(map), -1);
 	if (parse_data(map) == -1)
 		return(free(line), free_map(map), -1);
-	
 	// printf("line num = %d", map->number_of_line);
 	return (1);
 }
@@ -250,7 +250,7 @@ int	main(int argc, char **argv)
 	}
 	
 	free_map(cub.map);
-	free_tab(cub.map->map);
+	// free_tab(cub.map->map);
 	free(cub.map);
 
 
