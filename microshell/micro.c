@@ -47,11 +47,11 @@ Write a program that will behave like executing a shell command
 #define TYPE_PIPE	1
 #define TYPE_BREAK	2
 
-#ifdef TEST_SH
-# define TEST		1
-#else
-# define TEST		0
-#endif
+// #ifdef TEST_SH
+// # define TEST		1
+// #else
+// # define TEST		0
+// #endif
 
 typedef struct	s_list
 {
@@ -133,7 +133,7 @@ int add_arg(t_list *cmd, char *arg)
 		free(cmd->args);
 	cmd->args = tmp;
 
-    //on ajoute le nouvel arg
+    //on ajoute le nouvel arg malloc
 	cmd->args[i++] = ft_strdup(arg);
 
     //on finit bien par NULL
@@ -225,7 +225,19 @@ int parse_arg(t_list **cmds, char *arg)
 		return (add_arg(*cmds, arg));
 	return (EXIT_SUCCESS);
 }
-    
+/*
+
+#define SIDE_OUT	0
+#define SIDE_IN		1
+
+#define STDIN		0
+#define STDOUT		1
+#define STDERR		2
+
+*/
+
+
+
 int exec_cmd(t_list *cmd, char **env)
 {
 	pid_t	pid;
@@ -235,6 +247,8 @@ int exec_cmd(t_list *cmd, char **env)
 
 	ret = EXIT_FAILURE;
 	pipe_open = 0;
+
+    //si il y a un pipe avant ou apres la commande actuelle
 	if (cmd->type == TYPE_PIPE || (cmd->previous && cmd->previous->type == TYPE_PIPE))
 	{
 		pipe_open = 1;
@@ -246,12 +260,13 @@ int exec_cmd(t_list *cmd, char **env)
 		return (exit_fatal());
 	else if (pid == 0)
 	{
-		if (cmd->type == TYPE_PIPE
-			&& dup2(cmd->pipes[SIDE_IN], STDOUT) < 0)
+		if (cmd->type == TYPE_PIPE && dup2(cmd->pipes[SIDE_IN], STDOUT) < 0)
 			return (exit_fatal());
-		if (cmd->previous && cmd->previous->type == TYPE_PIPE
-			&& dup2(cmd->previous->pipes[SIDE_OUT], STDIN) < 0)
+		if (cmd->previous && cmd->previous->type == TYPE_PIPE && dup2(cmd->previous->pipes[SIDE_OUT], STDIN) < 0)
 			return (exit_fatal());
+
+
+        
 		if ((ret = execve(cmd->args[0], cmd->args, env)) < 0)
 		{
 			show_error("error: cannot execute ");
@@ -283,10 +298,17 @@ int exec_cmds(t_list **cmds, char **env)
 	int		ret;
 
 	ret = EXIT_SUCCESS;
+    // on retourne au debut de la liste
+
 	list_rewind(cmds);
+
+
+//  on fait toutes les commandes dans l'ordre
 	while (*cmds)
 	{
 		crt = *cmds;
+
+        // on fait le built in cd a chaque fois
 		if (strcmp("cd", crt->args[0]) == 0)
 		{
 			ret = EXIT_SUCCESS;
@@ -299,8 +321,10 @@ int exec_cmds(t_list **cmds, char **env)
 				show_error("\n");
 			}
 		}
-		else
+		else //sinon bon chance
 			ret = exec_cmd(crt, env);
+        
+        //on passe a la commande suivante
 		if (!(*cmds)->next)
 			break ;
 		*cmds = (*cmds)->next;
@@ -320,11 +344,13 @@ int main(int argc, char **argv, char **env)
 	i = 1;
 	while (i < argc)
 		parse_arg(&cmds, argv[i++]);
+
+    //a ce stade on a cmds -> liste chainee -> chaque maillon c'est une commande qui contient les args[][]
 	if (cmds)
 		ret = exec_cmds(&cmds, env);
-	list_clear(&cmds);
-	if (TEST)
-		while (1);
+	list_clear(&cmds); //free toutes les structures +  a chaque fois les args [][]
+	// if (TEST)
+	// 	while (1);
 	return (ret);
 }
 
