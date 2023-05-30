@@ -266,7 +266,7 @@ int exec_cmd(t_list *cmd, char **env)
 			return (exit_fatal());
 
 
-        
+
 		if ((ret = execve(cmd->args[0], cmd->args, env)) < 0)
 		{
 			show_error("error: cannot execute ");

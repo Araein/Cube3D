@@ -1,0 +1,16 @@
+NO ./texture/mario/north_texture.xpm
+SO ./texture/mario/south_texture.xpm
+WE ./texture/mario/west_texture.xpm
+F 44,200,151
+
+EA ./texture/mario/east_texture.xpm
+
+C 255,0,152
+
+11111111111
+100100000N1
+10000001001
+10000000001
+10001000011
+10000000001
+11111111111
